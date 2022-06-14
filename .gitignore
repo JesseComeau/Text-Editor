@@ -1,3 +1,5 @@
+
+
 /Assets
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -350,3 +352,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+server/package-lock.json
+package-lock.json
+/client/dist
