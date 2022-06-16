@@ -15,30 +15,40 @@ const initdb = async () =>
 export const putDb = async (content)  => {
   console.log('Put to the database');
 
-  console.log(content)
 
   const jateDB = await openDB('jate', 1);
+  console.log("put content", content)
   const tx = jateDB.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.put({ id: 0, content: content });
+  const storageDB = await store.getAll();
+  console.log("storageDB")
+  const request = store.put({content: content});
   const result = await request;
   console.log('🚀 - data saved to the database', result);
 };
 
+// storageDB.length = 0 ? store.put({ id: 0, content: content }) :
+
 export const getDb = async () => {
   console.log('GET from the database');
 
-  const jateDB = await openDB('jate', 1);
+  // Create a connection to the database database and version we want to use.
+  const jateDb = await openDB('jate', 1);
 
-  const tx = jateDB.transaction('jate', 'readonly');
+  // Create a new transaction and specify the database and data privileges.
+  const tx = jateDb.transaction('jate', 'readonly');
 
+  // Open up the desired object store.
   const store = tx.objectStore('jate');
 
-  const request = store.getAll();
+  // Use the .getAll() method to get all data in the database.
+  const request = store.get(1);
 
+  // Get confirmation of the request.
   const result = await request;
 
-  return result;
+  console.log('result.value', result);
+  return result.value;
 };
 
 initdb();
