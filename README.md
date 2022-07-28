@@ -4,7 +4,7 @@ Bootcamp - Phase 3 - Week 19 Homework
 
 ## Description
 
-Progressive Web Application utilizing indexDB, local storage and a swervice worker.
+Progressive Web Application utilizing indexDB, local storage and a service worker.
 
 
 ## User Story
